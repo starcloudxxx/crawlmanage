@@ -4,6 +4,9 @@ import json
 import time
 import datetime
 from pprint import pprint
+import pymssql
+from .settings import (SQLSERV_DB, SQLSERV_HOST, SQLSERV_PSWD, SQLSERV_TABLE, 
+                        SQLSERV_USER)
 
 import requests
 from flask import current_app as app
@@ -67,6 +70,48 @@ def make_request(url, data=None, timeout=60, api=True, log=True, auth=None):
 def json_dumps(obj):
     return json.dumps(obj, ensure_ascii=False, indent=4, sort_keys=True)
 
+def get_Date_limit(namelist):
+    cnx = pymssql.connect()
+    cur = cnx.cursor()
+
+    result = {}
+
+    sql_string = "SELECT last_date, FROM " + SQLSERV_TABLE + " WHERE name=%s" 
+    for nn in namelist:
+
+        if cur.execute(sql_string, nn):
+            aldata = cur.fetchone()
+            last_Date = aldata[0]
+            daylimit = aldata[1]
+            result.setdefault(nn,[last_Date,daylimit])
+        else:
+            result.setdefault(nn,[None,None])
+    
+    return result
+
+
+def get_Date_Color(last_date, limit):
+    last_Date = last_date
+    now_Date = datetime.datetime.now()
+    time_delta = now_Date - last_Date
+    Days = time_delta.days
+    Seconds = time_delta.seconds
+
+    color_Style = [
+        "#228B22","#FFD700","#FF0000"
+    ]
+    if Days == 0:
+        Hours = int(Seconds/3600)
+        if Hours == 0:
+            return "1小时内", 
+        return str(Hours)+"小时前", 
+
+    day_Limit = limit.split(",")
+    for i in range(0,3):
+        if Days < int(day_Limit[i]):
+            return str(Days)+"天前", color_Style[i]
+
+    return "超出爬取上限", color_Style[2]
 
 # coding: utf8
 from collections import OrderedDict

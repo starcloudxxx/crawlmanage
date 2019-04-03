@@ -29,3 +29,10 @@ CACHE_ROUND_INTERVAL = 300
 CACHE_REQUEST_INTERVAL = 10
 # Set True to delete cached utf8 and stats files at startup
 DELETE_CACHE = False
+
+SQLSERV_HOST = "localhost"
+#SQLSERV_PORT = 
+SQLSERV_USER = "forcrawl"
+SQLSERV_PSWD = "lab760"
+SQLSERV_DB = "Vip_TongJi"
+SQLSERV_TABLE = "config_rules"
