@@ -32,7 +32,7 @@ DELETE_CACHE = False
 
 SQLSERV_HOST = "localhost"
 #SQLSERV_PORT = 
-SQLSERV_USER = "forcrawl"
+SQLSERV_USER = "fordate"
 SQLSERV_PSWD = "lab760"
 SQLSERV_DB = "Vip_TongJi"
 SQLSERV_TABLE = "config_rules"

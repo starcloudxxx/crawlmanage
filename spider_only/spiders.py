@@ -4,8 +4,8 @@ import re
 from flask import Blueprint, render_template, flash, request
 from flask import current_app as app
 
-from .vars import INFO, WARN, pattern_jobs, keys_jobs, WEBSITE_NAME, TEMPLATE_SPIDERS,NAVI_NAME,WEBSITE_ORDER
-from .utils import make_request
+from .vars import INFO, WARN, pattern_jobs, keys_jobs, WEBSITE_NAME, TEMPLATE_SPIDERS,NAVI_NAME
+from .utils import make_request, get_Date_limit, get_Date_Color
 
 bp = Blueprint('spiders', __name__, url_prefix='/')
 check_latest_version = True
@@ -35,28 +35,48 @@ def spiders(node):
     rows = [dict(zip(keys_jobs, row)) for row in pattern_jobs.findall(text)]
     print(rows)
 
-    website = WEBSITE_NAME[str(node)]
-    webOrder = WEBSITE_ORDER[str(node)]
+    website = WEBSITE_NAME[node-1]
+
     for row in rows[::-1]:
-        print(row['finish'])
+        if not row['start']:
+            row['status_text']="等待中"
+        elif not row['finish']:
+            row['status_text']="运行中"
+        else:
+            row['status_text']="已完成"
         try:
-            order = webOrder.index({
-                "project":row["project"],
-                "spider":row["spider"]
-            })
+            spider_name = row['spider']
+            website[spider_name].update(row)
         except:
-            app.logger.debug("[wrong number]-------%s" % str({
+            app.logger.debug("[wrong spider name]-------%s" % str({
                 "project":row["project"],
                 "spider":row["spider"]
             }))
-        else:
-            if not row['start']:
-                row['status_text']="等待中"
-            elif not row['finish']:
-                row['status_text']="运行中"
-            else:
-                row['status_text']="已完成"
-            website[order].update(row)
     
+    namelist = [nn for nn in website.keys()]
+    result = get_Date_limit(namelist)
+
+    for k,v in result.items():
+        if v[0]:
+            date_string, color_string = get_Date_Color(v[0],v[1])
+            color = {
+                "last_Date":date_string,
+                "color":color_string
+            }
+        else:
+            color = {
+                "last_Date":"无",
+                "color":"#000000"
+            }
+        try:
+            website[k].update(color)
+        except:
+            app.logger.debug("[wrong spider name]-------%s" % str({
+                "project":row["project"],
+                "spider":row["spider"]
+            }))
+        
+            
+
     return render_template(TEMPLATE, title=title, navis=navis, all_spiders=website)
 

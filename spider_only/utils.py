@@ -5,7 +5,7 @@ import time
 import datetime
 from pprint import pprint
 import pymssql
-from .settings import (SQLSERV_DB, SQLSERV_HOST, SQLSERV_PSWD, SQLSERV_TABLE, 
+from .vars import (SQLSERV_DB, SQLSERV_HOST, SQLSERV_PSWD, SQLSERV_TABLE, 
                         SQLSERV_USER)
 
 import requests

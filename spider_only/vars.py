@@ -49,10 +49,11 @@ NAVI_NAME = [
     }
 ]
 
-#for website
-WEBSITE_NAME = {
-    "1":[
-        {
+#for website 
+#spider is same as name , and must be unique
+WEBSITE_NAME = [
+    {
+        "people":{
             "order" : 1,
             "name" : "人民网",
             "language": "中文",
@@ -61,7 +62,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"people"
         },
-        {
+        "gmw":{
             "order" : 2,
             "name" : "光明网",
             "language": "中文",
@@ -70,7 +71,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "huanqiu":{
             "order" : 3,
             "name" : "环球网",
             "language": "中文",
@@ -79,7 +80,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"huanqiu"
         },
-        {
+        "xinhua":{
             "order" : 4,
             "name" : "新华网",
             "language": "中文",
@@ -88,7 +89,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "rmrb":{
             "order" : 5,
             "name" : "人民日报",
             "language": "中文",
@@ -97,7 +98,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"rmrb"
         },
-        {
+        "gmrb":{
             "order" : 6,
             "name" : "光明日报",
             "language": "中文",
@@ -106,7 +107,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "cssn":{
             "order" : 7,
             "name" : "中国社会科学报",
             "language": "中文",
@@ -115,7 +116,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"cssn"
         },        
-        {
+        "hqsb":{
             "order" : 8,
             "name" : "环球时报",
             "language": "中文",
@@ -124,7 +125,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"universalspider"
         },        
-        {
+        "china":{
             "order" : 9,
             "name" : "中国网",
             "language": "中文",
@@ -133,7 +134,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "thepaper":{
             "order" : 10,
             "name" : "澎湃新闻",
             "language": "中文",
@@ -142,7 +143,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "tagesschau":{
             "order" : 11,
             "name" : "tagesschau.de",
             "language": "德文",
@@ -151,7 +152,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"tagess"
         },
-        {
+        "sueddeutsche":{
             "order" : 12,
             "name" : "SUEDDEUTSCHE ZEITUNG",
             "language": "德文",
@@ -160,7 +161,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "spiegel":{
             "order" : 13,
             "name" : "SPIEGEL ONLINE",
             "language": "德文",
@@ -169,7 +170,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "zeit":{
             "order" : 14,
             "name" : "ZEIT ONLINE",
             "language": "德文",
@@ -178,7 +179,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"universalspider"
         },
-        {
+        "faz":{
             "order" : 15,
             "name" : "Franffurter Allgemeine",
             "language": "德文",
@@ -187,7 +188,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"universalspider"
         },
-        {
+        "welt":{
             "order" : 16,
             "name" : "WeLT",
             "language": "德文",
@@ -196,7 +197,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"universalspider"
         },
-        {
+        "handelsblatt":{
             "order" : 17,
             "name" : "Handelsblatt",
             "language": "德文",
@@ -205,7 +206,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"universalspider"
         },
-        {
+        "focus":{
             "order" : 18,
             "name" : "FOCUS ONLINE",
             "language": "德文",
@@ -214,7 +215,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"universalspider"
         },
-        {
+        "tagesspiegel":{
             "order" : 19,
             "name" : "DER TAGESSPIEGEL",
             "language": "德文",
@@ -223,7 +224,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"universalspider"
         },
-        {
+        "huffpost":{
             "order" : 20,
             "name" : "HUFFPOST",
             "language": "德文",
@@ -232,7 +233,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"universalspider"
         },
-        {
+        "nytimes":{
             "order" : 21,
             "name" : "The New York Times",
             "language": "英文",
@@ -241,7 +242,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"universalspider"
         },
-        {
+        "euobserver":{
             "order" : 22,
             "name" : "euobserver",
             "language": "英文",
@@ -250,7 +251,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"universalspider"
         },	
-        {
+        "ft":{
             "order" : 23,
             "name" : "FINANCIAL TIMES",
             "language": "英文",
@@ -259,7 +260,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"universalspider"
         },	
-        {
+        "reuters":{
             "order" : 24,
             "name" : "REUTERS",
             "language": "英文",
@@ -268,7 +269,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"universalspider"
         },
-        {
+        "thediplomat":{
             "order" : 25,
             "name" : "THE DIPLOMAT",
             "language": "英文",
@@ -277,9 +278,9 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"universalspider"
         }
-    ],
-    "2":[
-        {
+    },
+    {
+        "fmprc":{
             "order" : 1,
             "name" : "外交部",
             "language": "中文",
@@ -288,7 +289,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"fmprc"
         },
-        {
+        "most":{
             "order" : 2,
             "name" : "科技部",
             "language": "中文",
@@ -297,7 +298,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"most"
         },
-        {
+        "miit":{
             "order" : 3,
             "name" : "工信部",
             "language": "中文",
@@ -306,7 +307,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"miit"
         },
-        {
+        "moe":{
             "order" : 4,
             "name" : "教育部",
             "language": "中文",
@@ -315,7 +316,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "bundesregierung":{
             "order" : 5,
             "name" : "Bundesregierung",
             "language": "德文",
@@ -324,7 +325,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "auswaertiges":{
             "order" : 6,
             "name" : "Auswartiges Amt Seitennavigation",
             "language": "德文",
@@ -333,7 +334,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "bmwi":{
             "order" : 7,
             "name" : "Bundesministerium fur Wirtschaft und Energie",
             "language": "德文",
@@ -342,7 +343,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },        
-        {
+        "bundestag":{
             "order" : 8,
             "name" : "Deutscher Bundestag",
             "language": "德文",
@@ -351,7 +352,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },        
-        {
+        "euunion":{
             "order" : 9,
             "name" : "European Union",
             "language": "英文",
@@ -360,7 +361,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "euparliament":{
             "order" : 10,
             "name" : "European Parliament",
             "language": "英文",
@@ -369,7 +370,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "eucommission":{
             "order" : 11,
             "name" : "European Commission",
             "language": "英文",
@@ -378,7 +379,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "diplo":{
             "order" : 12,
             "name" : "Deutsche Vertretungen in China",
             "language": "德文",
@@ -387,7 +388,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "botschaft":{
             "order" : 13,
             "name" : "中华人民共和国驻德意志联邦共和国大使馆",
             "language": "中文",
@@ -396,9 +397,9 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         }
-    ],
-    "3":[
-        {
+    },
+    {
+        "swp":{
             "order" : 1,
             "name" : "SWP",
             "language": "德文",
@@ -407,7 +408,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"swp"
         },
-        {
+        "gigahamburg":{
             "order" : 2,
             "name" : "GIGA",
             "language": "德文",
@@ -416,7 +417,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "dgap":{
             "order" : 3,
             "name" : "DGAP",
             "language": "德文",
@@ -425,7 +426,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "merics":{
             "order" : 4,
             "name" : "merics",
             "language": "德文",
@@ -434,7 +435,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "kas":{
             "order" : 5,
             "name" : "Konrad Adenauer Stiftung",
             "language": "德文",
@@ -443,7 +444,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "fes":{
             "order" : 6,
             "name" : "Friedrich Ebert Stiftung",
             "language": "德文",
@@ -452,7 +453,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "ecfr":{
             "order" : 7,
             "name" : "European council on foreign relations",
             "language": "英文",
@@ -461,7 +462,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "gmfus":{
             "order" : 8,
             "name" : "GMF",
             "language": "英文",
@@ -470,7 +471,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "foreignaffairs":{
             "order" : 9,
             "name" : "Foreign Affairs",
             "language": "英文",
@@ -479,9 +480,9 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         }      
-    ],
-    "4":[
-        {
+    },
+    {
+        "ozyj":{
             "order" : 1,
             "name" : "欧洲研究",
             "language": "中文",
@@ -490,7 +491,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "dgyj":{
             "order" : 2,
             "name" : "德国研究",
             "language": "中文",
@@ -499,7 +500,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "gjlt":{
             "order" : 3,
             "name" : "国际论坛",
             "language": "中文",
@@ -508,7 +509,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "sjjjyzz":{
             "order" : 4,
             "name" : "世界经济与政治",
             "language": "中文",
@@ -517,7 +518,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "gjwtyj":{
             "order" : 5,
             "name" : "国际问题研究",
             "language": "中文",
@@ -526,7 +527,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "xdgjgx":{
             "order" : 6,
             "name" : "现代国际关系",
             "language": "中文",
@@ -535,7 +536,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "wjpl":{
             "order" : 7,
             "name" : "外交评论",
             "language": "中文",
@@ -544,7 +545,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },        
-        {
+        "gjzw":{
             "order" : 8,
             "name" : "国际展望",
             "language": "中文",
@@ -553,7 +554,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },        
-        {
+        "fwecpo":{
             "order" : 9,
             "name" : "世界经济与政治论坛",
             "language": "中文",
@@ -562,7 +563,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "ipos":{
             "order" : 10,
             "name" : "国际政治研究",
             "language": "中文",
@@ -571,7 +572,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "cwoso":{
             "order" : 11,
             "name" : "当代世界与社会主义",
             "language": "中文",
@@ -580,7 +581,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "zfas":{
             "order" : 12,
             "name" : "ZEITSCHRIFT FUR AUSSEN- UND SICHERHEITSPOLITI",
             "language": "德文",
@@ -589,7 +590,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "jcms":{
             "order" : 13,
             "name" : "JOURNAL OF COMMON MARKET STUDIES",
             "language": "英文",
@@ -598,7 +599,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "wepo":{
             "order" : 14,
             "name" : "WEST EUROPEAN POLITICS",
             "language": "英文",
@@ -607,7 +608,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "gposo":{
             "order" : 15,
             "name" : "GERMAN POLITICS AND SOCIETY",
             "language": "英文",
@@ -616,7 +617,7 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         },
-        {
+        "gpo":{
             "order" : 16,
             "name" : "GERMAN POLITICS",
             "language": "英文",
@@ -625,273 +626,8 @@ WEBSITE_NAME = {
             "project":"universalspider",
             "spider":"china"
         }
-    ]
-}
-WEBSITE_ORDER = {
-    "1":[
-        {
-            "project":"universalspider",
-            "spider":"people"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"huanqiu"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"rmrb"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"cssn"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"tagess"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-           "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        }        
-    ],
-    "2":[
-        {
-            "project":"universalspider",
-            "spider":"fmprc"
-        },
-        {
-            "project":"universalspider",
-            "spider":"most"
-        },
-        {
-            "project":"universalspider",
-            "spider":"miit"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        }
-    ],
-    "3":[
-        {
-            "project":"universalspider",
-            "spider":"swp"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        }
-    ],
-    "4":[
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        },
-        {
-            "project":"universalspider",
-            "spider":"china"
-        }
-    ]
-}
-
-
+    }
+]
 
 
 # For dashboard
@@ -933,3 +669,11 @@ pattern_directory = re.compile(r"""<tr\sclass="(?P<odd_even>odd|even)">\n
                                 """, re.X)
 
 keys_directory = ['odd_even', 'filename', 'size', 'content_type', 'content_encoding']
+
+
+SQLSERV_HOST = "localhost"
+#SQLSERV_PORT = 
+SQLSERV_USER = "fordate"
+SQLSERV_PSWD = "lab760"
+SQLSERV_DB = "Vip_TongJi"
+SQLSERV_TABLE = "config_rules"
