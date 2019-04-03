@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}欢迎{% endblock %}
+
+{% block head %}{% endblock %}
+
+{% block navi %}
+{% for navi in navis %}
+    <li>
+        <a href="{{ url_for('spiders.spiders', node=navi.node) }}"><i class="fa fa-edit"></i>{{ navi.name }}</a>
+    </li>
+{% endfor %}
+{% endblock %}
+
+{% block body %}
+<!-- /. ROW  -->                               
+<div class="row">
+    <div class="col-md-11 col-sm-10">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                欢迎使用德国智库客户端！
+            </div>
+            <div class="panel-body">
+                <p>该客户端主要用于收集网络中公开的关于中德关系的信息，包括新闻、时事评论、政府文件、智库文章、学术论文等。主要划分为四类，即新闻媒体类、原始文献类、智库报告类、学术论文类。</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}{% endblock %}

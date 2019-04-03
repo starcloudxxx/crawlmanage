@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{% endblock %}--中德智库爬虫系统</title>
+	<!-- Bootstrap Styles-->
+    <link href="{{ url_for('static',filename='css/bootstrap.css') }}" rel="stylesheet" />
+     <!-- FontAwesome Styles-->
+    <link href="{{ url_for('static',filename='css/font-awesome.css') }}" rel="stylesheet" />
+        <!-- Custom Styles-->
+    <link href="{{ url_for('static',filename='css/custom-styles.css') }}" rel="stylesheet" />
+    <!-- <link href="{{ url_for('static',filename='css/common.css') }}" rel="stylesheet" /> -->
+     <!-- Google Fonts-->
+   <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default top-navbar" role="navigation" style="height:30px;">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                </button>
+                <a class="navbar-brand" href="{{ url_for('index.index') }}"><i class="fa fa-gear"></i> <strong>中德智库爬虫系统</strong></a>
+            </div>
+
+            <ul class="nav navbar-top-links navbar-right" id="nav_daemonstatus">
+            </ul>
+
+        </nav>
+        <!--/. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li>
+                            <a href=" {{ url_for('index.index') }}"><i class="fa fa-edit"></i>首 页</a>
+                    </li>
+				    {% block navi %}{% endblock %}					
+                </ul>
+
+            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper" >
+            <div id="page-inner">
+                {% block loader %}
+                <div class="loader" style="display: none;" onclick="hideLoader();"></div>
+                {% endblock %}
+
+                {% block body %}{% endblock %}
+            </div>
+             <!-- /. PAGE INNER  -->
+        </div>
+         <!-- /. PAGE WRAPPER  -->
+    </div>
+     <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+    <script src="{{ url_for('static',filename='js/jquery-1.10.2.js') }}"></script>
+      <!-- Bootstrap Js -->
+    <script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+    <!-- Metis Menu Js -->
+    <script src="{{ url_for('static',filename='js/jquery.metisMenu.js') }}"></script>
+      <!-- Custom Js -->
+    <script src="{{ url_for('static',filename='js/custom-scripts.js') }}"></script>
+    <!-- Icon Js -->
+    <script src="{{ url_for('static',filename='js/font_842334_yo81eqsrze.js') }}"></script>
+
+    <script src="{{ url_for('static',filename='js/common.js') }}"></script>
+    {% block script %}{% endblock %}
+</body>
+</html>

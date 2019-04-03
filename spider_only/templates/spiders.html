@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block head %}
+<link href="{{ url_for('static',filename='js/dataTables/dataTables.bootstrap.css') }}" rel="stylesheet" />
+<!-- <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet" /> -->
+<script>
+    window.onload = function () {
+        var topInp = document.getElementById("theadInp");
+        var tbody = document.getElementById("tbody");
+        var botInpArr = tbody.getElementsByTagName("input");
+
+//绑定事件
+        topInp.onclick = function () {
+//优化版（被点击的input按钮的checked属性值，直接作为下面的所有的input按钮的checked属性值）
+            for(var i=0;i<botInpArr.length;i++){
+                botInpArr[i].checked = this.checked;
+            }
+        }
+        for(var i=0;i<botInpArr.length;i++){
+            botInpArr[i].onclick = function () {
+                //定义一个标识是true还是false的变量
+                //默认它为true
+                var bool = true;
+                //检测每一个input的checked属性值。
+                for(var j=0;j<botInpArr.length;j++){
+                    if(botInpArr[j].checked == false){
+                        bool = false;
+                    }
+                }
+                topInp.checked = bool;
+            }
+        }
+    }
+
+</script>
+{% endblock %}
+
+{% block navi %}
+{% for row in navis %}
+    <li>
+        <a href="{{ url_for('spiders.spiders', node=row.node) }}"><i class="fa fa-edit"></i>{{ row.name }}</a>
+    </li>
+{% endfor %}
+{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="page-header">
+            {{ title }} <small></small>
+        </h1>
+    </div>
+</div> 
+    <!-- /. ROW  -->
+
+<div class="row">
+        <div class="col-md-12">
+            <!-- Advanced Tables -->
+            <form>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                        请选择想要爬取数据的新闻网页							 
+                </div>
+
+                
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <thead>
+                                <tr style="background: #CCCCCC;text-align: center;">
+                                    
+                                    <th><input type="checkbox" id="theadInp" name="check_box"/></th>
+                                    <th>重要性排序</th>
+                                    <th>网站名称</th>
+                                    <th>链接地址</th>
+                                    <th>运行状态</th>
+                                    <th>详细信息</th>
+                                    <th>开始时间</th>
+                                    <th>结束时间</th>
+                                    <th>开始</th>
+                                    <th>停止</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody">
+                                {% for row in all_spiders %}
+                                <tr class="odd gradeX">
+                                        <td><input type="checkbox" name="ckb" onclick="ckbSome()"/></td>
+                                        <td>{{ row['order'] }}</td>
+                                        <td>{{ row['name'] }}</td>
+                                        <td>
+                                            <a href="{{ row['url'] }}">{{ row['url'] }}</a>
+                                        </td>
+                                        <td>
+                                            <img id="loading" style="display:
+                                            {%if row['status_text'] == '运行中' %}
+                                            block
+                                            {% else %}
+                                            none
+                                            {% endif%}
+                                            ;width: 25px;height: 25px;float: left;" src="{{ url_for('static',filename='img/timg.gif') }}">
+                                            <span>{{ row['status_text'] }}</span>
+                                        </td>
+                                        <td>
+                                            
+                                            <a href="
+                                            {% if row['project'] and row['spider'] %}
+                                            {{ url_for('logs.logs', project=row['project'],spider=row['spider']) }}
+                                            {% endif %}
+                                            ">详细页面</a>
+                                        </td>
+                                        <td>{{ row['start'] }}</td>
+                                        <td>{{ row['finish'] }}</td>
+                                        <td>
+                                            {% if row['spider'] and (not row['status_text'] or row['status_text'] == '已完成' )%}
+                                            <a class="state safe" href="javascript:;" 
+                                            onclick="spiderXHR('{{ url_for('api.api',project=row['project'], version_spider_job=row['spider'],opt='start') }}','start');" >
+                                                开始</a>
+                                            {% endif%}
+                                        </td>
+                                        <td>
+                                            {% if row['project'] and row['status_text'] == '运行中' %}
+                                            <a class="state danger"  style="margin-right: 5px;" href="javascript:;" 
+                                            onclick="spiderXHR('{{ url_for('api.api',project=row['project'],version_spider_job=row['job'] ,opt='stop') }}','stop');">
+                                                结束</a>
+                                            {% endif %}
+                                        </td>                                       
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            </form>
+        </div>    
+</div>
+{% endblock %}
+
+{% block script %}
+ <!-- DATA TABLE SCRIPTS -->
+ <script src="{{ url_for('static',filename='js/dataTables/jquery.dataTables.js') }}"></script>
+ <script src="{{ url_for('static',filename='js/dataTables/dataTables.bootstrap.js') }}"></script>
+ <script>
+        //  $(document).ready(function () {
+        //      $('#dataTables-example').dataTable();
+        //  });
+        //  $(function(){
+            $('#dataTables-example').dataTable();
+        //  });
+ </script>
+ <script>
+        //setTimeout("window.location.href = '/';", 60000);
+        //setTimeout("window.location.reload(true);", 20000);
+        setTimeout("console.log(loading);if(loading == false){window.location.reload(true);}else{}", 300000);
+        
+        function spiderXHR(url, opt) {
+            if (opt !== undefined) {
+                var r = confirm(opt+" the spider?");
+                if(r == false) {
+                    return;
+                }
+            }
+        
+            showLoader();
+            var req = new XMLHttpRequest();
+            req.onreadystatechange = function() {
+                if (this.readyState == 4) {
+                    hideLoader();
+                    if (this.status == 200) {
+                        obj = JSON.parse(this.responseText);
+                        if (obj.status == 'ok') {
+                            alert(this.responseText);
+                            window.location.reload(true);
+                        } else {
+                            //if (window.confirm(location.protocol+"//"+location.host+url+" got status: "+obj.status+", open a new tab for details?")) {
+                                //var win = window.open(url, '_blank');
+                                //win.focus();
+                            //}
+                            alert("REQUEST got status: "+obj.status);
+                            var left = (screen.width-600)/2;
+                            var top = (screen.height-800)/2;
+                            window.open(url, "_blank", "left="+left+", top="+top+", width=600, height=800, toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes");
+                        }
+                    } else {
+                        alert("REQUEST got code: "+this.status);
+                        var left = (screen.width-600)/2;
+                        var top = (screen.height-800)/2;
+                        window.open(url, "_blank", "left="+left+", top="+top+", width=600, height=800, toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes");
+                    }
+                }
+            };
+            req.open("get", url, Async = true);
+            req.send();
+        }
+        </script>
+{% endblock %}

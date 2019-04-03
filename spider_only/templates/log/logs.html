@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block title %}爬取记录{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/common.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/font_804951_pwq5pv3hrpi.css') }}">
+    
+<style>
+    table {margin-bottom: 16px;}
+    .back-forward {margin: 16px 0;}
+    td.filename {
+        font-size: x-large;
+        display: grid;
+    }
+    .action {margin: 16px 0;}
+</style>
+{% endblock %}
+
+{% block navi %}
+{% for row in navis %}
+    <li>
+        <a href="{{ url_for('spiders.spiders', node=row.node) }}"><i class="fa fa-edit"></i>{{ row.name }}</a>
+    </li>
+{% endfor %}
+{% endblock %}
+
+{% block body %}
+<div class="col-md-6">
+    <!--    Context Classes  -->
+   <div class="panel panel-default">
+      
+       <div class="panel-heading">
+           Context Classes
+       </div>
+       
+       <div class="panel-body">
+           <div class="table-responsive">
+               <table class="table">
+                   <thead>
+                       <tr>
+                        <th>Filename</th>
+                        <th>Project</th>
+                        <th>Spider</th>
+        
+                        {% if project and spider %}
+                        <th>UTF8</th>
+                        <th>Stats</th>
+                        {% endif %}
+        
+                        <th>Size</th>
+                        <th>Content type</th>
+                        <th>Content encoding</th>
+                       </tr>
+                   </thead>
+                   <tbody>
+                    {% for row in rows %}
+                    <tr>
+                        <td>{{ row['filename']|safe }}</td>
+            
+                        {% if project %}
+                        <td>{{ project }}</td>
+                        {% else %}
+                        <td>{{ row['filename']|regex_replace('<a.*?>(.*?)/</a>', '\\1') }}</td>
+                        {% endif %}
+            
+                        {% if spider %}
+                        <td>{{ spider }}</td>
+                        {% elif project %}
+                        <td>{{ row['filename']|regex_replace('<a.*?>(.*?)/</a>', '\\1') }}</td>
+                        {% else %}
+                        <td></td>
+                        {% endif %}
+            
+                        {% if project and spider %}
+                        <td><a class="state normal" href="{{ row['url_log_utf8'] }}" onclick="showLoader();">UTF8</a></td>
+                        <td><a class="state normal" href="{{ row['url_log_stats'] }}" onclick="showLoader();">Stats</a></td>
+                        {% endif %}
+            
+                        <td>{{ row['size'] }}</td>
+                        <td>{{ row['content_type'] }}</td>
+                        <td>{{ row['content_encoding'] }}</td>
+                    </tr>
+                {% endfor %}
+                   </tbody>
+               </table>
+           </div>
+       </div>
+   </div>
+{% endblock %}    
+
+{% block script %}{% endblock %}

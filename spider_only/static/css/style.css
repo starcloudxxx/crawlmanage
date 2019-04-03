@@ -1,0 +1,16 @@
+
+.state.normal{
+    background: #409EFF;
+}
+
+.state.safe {
+    background: #67c23a;
+}
+
+.state.danger {
+    background: #fd6b6e;
+}
+
+.state.warning {
+    background: #feb324; /* orange */
+}
