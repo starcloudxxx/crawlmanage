@@ -673,7 +673,7 @@ keys_directory = ['odd_even', 'filename', 'size', 'content_type', 'content_encod
 
 SQLSERV_HOST = "localhost"
 #SQLSERV_PORT = 
-SQLSERV_USER = "fordate"
-SQLSERV_PSWD = "lab760"
+SQLSERV_USER = "sa"
+SQLSERV_PSWD = "tongji@123456"
 SQLSERV_DB = "Vip_TongJi"
 SQLSERV_TABLE = "config_rules"

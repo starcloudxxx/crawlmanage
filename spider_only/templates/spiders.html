@@ -83,7 +83,7 @@
                                 </tr>
                             </thead>
                             <tbody id="tbody">
-                                {% for row in all_spiders %}
+                                {% for row in all_spiders.values() %}
                                 <tr class="odd gradeX">
                                         <td><input type="checkbox" name="ckb" onclick="ckbSome()"/></td>
                                         <td>{{ row['order'] }}</td>
@@ -110,7 +110,7 @@
                                             ">详细页面</a>
                                         </td>
                                         <td>
-                                            <span style="color:{{row['color']}}">{{row['last_Date']}}</span>
+                                            
                                         </td>
                                         <td>
                                             {% if row['spider'] and (not row['status_text'] or row['status_text'] == '已完成' )%}

@@ -71,22 +71,33 @@ def json_dumps(obj):
     return json.dumps(obj, ensure_ascii=False, indent=4, sort_keys=True)
 
 def get_Date_limit(namelist):
-    cnx = pymssql.connect()
-    cur = cnx.cursor()
-
     result = {}
+    app.logger.debug("[wrong]-----%s" % "i'm in 1")
+    try:
+        cnx = pymssql.connect(host=SQLSERV_HOST,user=SQLSERV_USER,password=SQLSERV_PSWD,database=SQLSERV_DB)
+        app.logger.debug("[wrong]-----%s" % "i'm in 2")
+        cur = cnx.cursor()
+        app.logger.debug("[wrong]-----%s" % "i'm in 3")
+    except Exception as e:
+        app.logger.debug("[wrong]-----%s" % str(e))
 
-    sql_string = "SELECT last_date, FROM " + SQLSERV_TABLE + " WHERE name=%s" 
-    for nn in namelist:
+    try:
+        sql_string = "SELECT datelast,daylimit FROM " + SQLSERV_TABLE + " WHERE name=%(name)s" 
+        for nn in namelist:
+            value = {
+                "name":nn
+            }
+            if cur.execute(sql_string, value):
+                aldata = cur.fetchone()
+                last_Date = aldata[0]
+                daylimit = aldata[1]
+                result.setdefault(nn,[last_Date,daylimit])
+            else:
+                result.setdefault(nn,[None,None])
+    except Exception as e:
+        app.logger.debug("[wrong]-----%s" % str(e))
 
-        if cur.execute(sql_string, nn):
-            aldata = cur.fetchone()
-            last_Date = aldata[0]
-            daylimit = aldata[1]
-            result.setdefault(nn,[last_Date,daylimit])
-        else:
-            result.setdefault(nn,[None,None])
-    
+    #cnx.close()
     return result
 
 

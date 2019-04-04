@@ -54,27 +54,28 @@ def spiders(node):
             }))
     
     namelist = [nn for nn in website.keys()]
-    result = get_Date_limit(namelist)
 
-    for k,v in result.items():
-        if v[0]:
-            date_string, color_string = get_Date_Color(v[0],v[1])
-            color = {
-                "last_Date":date_string,
-                "color":color_string
-            }
-        else:
-            color = {
-                "last_Date":"无",
-                "color":"#000000"
-            }
-        try:
-            website[k].update(color)
-        except:
-            app.logger.debug("[wrong spider name]-------%s" % str({
-                "project":row["project"],
-                "spider":row["spider"]
-            }))
+    result = get_Date_limit(namelist)
+    #app.logger.debug("[wrong]-----%s" % str(result))
+#    for k,v in result.items():
+#        if v[0]:
+#            date_string, color_string = get_Date_Color(v[0],v[1])
+#            color = {
+#                "last_Date":date_string,
+#                "color":color_string
+#            }
+#        else:
+#            color = {
+#                "last_Date":"无",
+#                "color":"#000000"
+#            }
+#        try:
+#            website[k].update(color)
+#        except:
+#            app.logger.debug("[wrong spider name]-------%s" % str({
+#                "project":row["project"],
+#                "spider":row["spider"]
+#            }))
         
             
 
